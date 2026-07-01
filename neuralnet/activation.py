@@ -33,8 +33,8 @@ class Sigmoid(Function):
 class Softmax(Function):
 
     def forward(self, x):
-        exp_array = np.exp(x - np.max(x))
-        return exp_array / np.sum(exp_array)
+        exp_array = np.exp(x - np.max(x, axis=-1, keepdims=True))
+        return exp_array / np.sum(exp_array, axis=-1, keepdims=True)
 
     def backward(self, a_current, y_true):
         return y_true - a_current
