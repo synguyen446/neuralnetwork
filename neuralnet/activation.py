@@ -37,4 +37,4 @@ class Softmax(Function):
         return exp_array / np.sum(exp_array, axis=-1, keepdims=True)
 
     def backward(self, a_current, y_true):
-        return y_true - a_current
+        return a_current - y_true
